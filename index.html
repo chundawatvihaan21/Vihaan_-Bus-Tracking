@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>School Bus Tracker - Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>School Bus Tracker</h1>
+    <p>Submit attendance & distance — stored locally in your browser.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Submit Bus Data</h2>
+      <form id="entryForm">
+        <div class="row">
+          <label>Bus No.<input type="text" id="busNo" required placeholder="Bus 1" /></label>
+          <label>Date<input type="date" id="date" /></label>
+        </div>
+        <div class="row">
+          <label>Students Present<input type="number" id="present" min="0" required /></label>
+          <label>Students Absent<input type="number" id="absent" min="0" /></label>
+          <label>Distance (km)<input type="number" id="distance" min="0" step="0.1" /></label>
+        </div>
+        <div class="row">
+          <button type="submit">Add Entry</button>
+          <button type="button" id="seedBtn">Add Sample Data</button>
+          <button type="button" id="exportCsv">Export CSV</button>
+          <button type="button" id="resetBtn">Reset All Data</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Entries</h2>
+      <table id="entriesTable">
+        <thead>
+          <tr>
+            <th>Bus</th>
+            <th>Date</th>
+            <th>Present</th>
+            <th>Absent</th>
+            <th>Distance (km)</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="card charts">
+      <h2>Charts</h2>
+      <div class="chart-row">
+        <div class="chart-card">
+          <h3>Students Present per Bus</h3>
+          <canvas id="barChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Distance by Bus (last 7 days)</h3>
+          <canvas id="lineChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-card">
+          <h3>Overall Attendance</h3>
+          <canvas id="pieChart"></canvas>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Demo — data saved in the browser. For multi-user use, connect to a backend (Firebase / server).</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
